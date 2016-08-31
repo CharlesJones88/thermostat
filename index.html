@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="thermostat">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thermostat</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="bower_components/angular-circular-slider/dist/css/angular-circular-slider.min.css"/>
+    <link rel="stylesheet" href="bower_components/angular-ui-switch/angular-ui-switch.min.css"/>
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css"/>
+    <link rel="stylesheet" type="text/css" href="bower_components/nz-toggle/dist/nz-toggle.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
+    <script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.10/d3.min.js"></script>
+    <script src="bower_components/ng-knob/dist/ng-knob.min.js"></script>
+    <script src="bower_components/angular-circular-slider/dist/js/angular-circular-slider.js"></script>
+    <script src="bower_components/angular-ui-switch/angular-ui-switch.min.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="node_modules/lodash/lodash.min.js"></script>
+    <script type="text/javascript" src="bower_components/nz-toggle/dist/nz-toggle.min.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/thermostatCtrl.js"></script>
+    <script src="services/thermostatService.js"></script>
+</head>
+<body ng-controller="thermostatCtrl">
+    <script type="text/ng-template" id="modalContent.html">
+        <div class="modal-header">
+            <span>Schedule</span>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <div ui-calendar="uiConfig.calendar" id="calendar" ng-model="events" calendar="calendar"></div>
+            <button type="button" class="btn btn-primary modal-button" ng-click="addEvent()">Add Event</button>
+            <button type="button" class="btn modal-button" ng-click="remove()">Remove Event</button>
+            <input ng-if="add" type="text" ng-keydown="setEvent($event)">
+        </div>
+    </script>
+    <div class="top-spacing left-spacing">
+        <div class="inline-block">
+            <span class="temp-text">{{temperature}}&#8457;</span>
+            <div class="inline-block left-spacing">
+                <div class="button-width">
+                    <button type="button" ng-click="tempUp()" class="btn btn-lg btn-danger btn-block button-height block temp-button-bottom">
+                        <span class="button-text">+</span>
+                    </button>
+                </div>
+                <div class="button-width">
+                    <button type="button" ng-click="tempDown()" class="btn btn-lg btn-primary btn-block button-height block temp-button-top">
+                        <span class="button-text">-</span>
+                    </button>
+                </div>
+            </div>  
+        </div>
+        <div class="mode-container inline-block left-spacing">
+            <span class="info-text">Fan</span>
+            <div class="block">
+                <span class="align space-right">Auto</span>
+                <switch id="fanEnabled" name="fanEnabled" ng-model="fanEnabled" ng-change="toggleFan()" class="green align-button"></switch>
+                <span class="align space-left">On</span>
+            </div>
+            <span class="info-text">Climate Control</span>
+            <div class="block tri-button-space">
+                <nz-toggle tri-toggle height="30" on-toggle="toggleMode()" ng-model="mode" val-false="'heat'" val-null="'off'" val-true="'cool'" color-false="'#ff0000'" color-null="'#ffcc99'" color-true="'#0000ff'" tip-false="'Heat'" tip-null="'Off'" tip-true="'Cool'"></nz-toggle>
+            </div>
+        </div>   
+    </div>
+    <div class="left-spacing">
+        <button type="button" class="btn btn-default block" ng-click="open()">Schedule</button>
+        <span class="info-text">Current: </span>
+        <span class="left-spacing current-temp-text">{{current}}&#8457;</span>
+    </div>
+    <div class="weather-width">
+        <iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%"> </iframe>
+    </div>
+</body>
+</html>

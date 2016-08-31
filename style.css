@@ -1,0 +1,115 @@
+body {
+    background-color: #a1d1f2;
+}
+
+.thermostat {
+    padding: 50px 0 0 50px;
+}
+
+.acs {
+    border-color: blue;
+}
+
+.acs-indicator {
+    background-color: blue;
+}
+
+.acs-value {
+    border: 2px solid #d3d3d3;
+    background-color: #808080;
+}
+
+.block {
+    display: block;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.weather-width {
+    width: 500px;
+}
+
+.thermostat-container {
+    height: 400px;
+}
+
+.align {
+    vertical-align: sub;
+}
+
+.align-button {
+    vertical-align: top;
+}
+
+.space-right {
+    padding-right: 8px;
+}
+
+.space-left {
+    padding-left: 10px;
+}
+
+.tri-button-space {
+    padding-left: 40px;
+}
+
+.temp-text {
+    font-size: 50px;
+    font-weight: 700;
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 46px;
+    margin-left: 24px;
+    color: #505050;
+}
+
+.current-temp-text {
+    font-size: 50px;
+    font-weight: 700;
+    display: block;
+    color: #505050;
+}
+
+.top-spacing {
+    padding-top: 24px;
+}
+
+.left-spacing {
+    padding-left: 24px;
+}
+
+.temp-button-top {
+    margin-top: 10px;
+}
+
+.button-text {
+    font-size: 100px;
+    line-height: 32px;
+}
+
+.temp-button-bottom {
+    margin-bottom: 10px;
+}
+
+.button-width {
+    width: 100px;
+}
+
+.button-height {
+    height: 75px;
+}
+
+.mode-container {
+    vertical-align: top;
+}
+
+.info-text {
+    text-decoration: underline;
+    font-size: 25px;
+}
+
+.modal-button {
+    margin-top: 15px;
+}
