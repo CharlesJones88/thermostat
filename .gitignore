@@ -12,3 +12,6 @@ bower_components
 
 # Optional eslint cache
 .eslintcache
+
+# Config file
+config.json
