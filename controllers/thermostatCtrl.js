@@ -88,7 +88,6 @@ angular.module('thermostat').controller('thermostatCtrl', function($scope, $filt
         console.log('Rendered');
     };
 
-    console.log(uiCalendarConfig.calendars);
     $('#calendar').fullCalendar({
         googleCalendarApiKey: '377181786583-bc76rduacr7qih5cdvs9g4dss767ba4k.apps.googleusercontent.com',
         events: {

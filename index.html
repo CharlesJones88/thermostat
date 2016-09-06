@@ -43,9 +43,9 @@
         </div>
     </script>
     <div class="top-spacing left-spacing">
-        <div class="inline-block">
+        <div class="inline-block right-space">
             <span class="temp-text">{{temperature}}&#8457;</span>
-            <div class="inline-block left-spacing">
+            <div class="inline-block">
                 <div class="button-width">
                     <button type="button" ng-click="tempUp()" class="btn btn-lg btn-danger btn-block button-height block temp-button-bottom">
                         <span class="button-text">+</span>
@@ -59,25 +59,40 @@
             </div>  
         </div>
         <div class="mode-container inline-block left-spacing">
+            <div>
             <span class="info-text">Fan</span>
-            <div class="block">
-                <span class="align space-right">Auto</span>
-                <switch id="fanEnabled" name="fanEnabled" ng-model="fanEnabled" ng-change="toggleFan()" class="green align-button"></switch>
-                <span class="align space-left">On</span>
+                <div class="block state-button-space">
+                    <div class="block">
+                        <span class="space-right">Auto</span>
+                        <span>On</span>
+                    </div>
+                    <switch id="fanEnabled" name="fanEnabled" ng-model="fanEnabled" ng-change="toggleFan()" class="green align-button"></switch>
+                </div>
             </div>
-            <span class="info-text">Climate Control</span>
-            <div class="block tri-button-space">
-                <nz-toggle tri-toggle height="30" on-toggle="toggleMode()" ng-model="mode" val-false="'heat'" val-null="'off'" val-true="'cool'" color-false="'#ff0000'" color-null="'#ffcc99'" color-true="'#0000ff'" tip-false="'Heat'" tip-null="'Off'" tip-true="'Cool'"></nz-toggle>
+            <div>
+                <span class="info-text">Climate</span>
+                <div class="block">
+                    <div class="block">
+                        <span class="space-right">Heat</span>
+                        <span class="space-right">Off</span>
+                        <span>Cool</span>
+                    </div>
+                    <div class="state-button-space">
+                        <nz-toggle tri-toggle height="30" on-toggle="toggleMode()" ng-model="mode" val-false="'heat'" val-null="'off'" val-true="'cool'" color-false="'#ff0000'" color-null="'#ffcc99'" color-true="'#0000ff'" tip-false="'Heat'" tip-null="'Off'" tip-true="'Cool'"></nz-toggle>
+                    </div>
+                </div>
             </div>
         </div>   
     </div>
     <div class="left-spacing">
+        <div>
+            <span class="info-text">Current: </span>
+            <span class="current-temp-text">{{current}}&#8457;</span>
+        </div>
         <button type="button" class="btn btn-default block" ng-click="open()">Schedule</button>
-        <span class="info-text">Current: </span>
-        <span class="left-spacing current-temp-text">{{current}}&#8457;</span>
     </div>
     <div class="weather-width">
-        <iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%"> </iframe>
+        <iframe id="forecast_embed" type="text/html" frameborder="0" height="245"> </iframe>
     </div>
 </body>
 </html>
