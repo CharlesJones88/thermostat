@@ -3,11 +3,11 @@ var fs = require('fs');
 var http = require('http');
 var https = require('https');
 var express = require('express');
-var sockjs = require('sockjs');
 var zerorpc = require('zerorpc');
 var bodyParser = require('body-parser');
 var winston = require('winston');
-var content = fs.readFileSync('config');
+var content = JSON.parse(fs.readFileSync(__dirname + '/config.json'));
+
 var logger = new (winston.Logger)({
     transports: [
         new(winston.transports.File)({filename: content['logging']})
