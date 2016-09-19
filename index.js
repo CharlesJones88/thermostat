@@ -1,4 +1,4 @@
-#!/home/pi/.nvm/versions/node/v6.4.0/bin/node
+#!/usr/bin/node
 var fs = require('fs');
 var http = require('http');
 var https = require('https');
